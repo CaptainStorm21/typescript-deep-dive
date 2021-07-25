@@ -10,20 +10,16 @@ const oldCivic = {
 }
 
 // Inefficient interface
-const printVehicle = (vehicle:
-  {
-    name: string;
-    year: number;
-    broken: boolean;
-  }): void => {
-    
-  console.log(`Name: ${vehicle.name}`);
-  console.log(`Year: ${vehicle.year}`);
-  console.log(`Broken: ${vehicle.broken}`);
+const printVehicle = (vehicle: Vehicle): void => {
+  // console.log(`Name: ${vehicle.name}`);
+  // console.log(`Year: ${vehicle.year}`);
+  // console.log(`Broken: ${vehicle.broken}`);
+  console.log(vehicle.summary())
 }
 printVehicle(oldCivic);
 // fixing annotation
 // we are creating a new type each time we create a new interface
+
 
 interface Vehicle {
 
@@ -57,3 +53,29 @@ interface FourCar {
 const printVehicle3 = (vehicle: Vehicle): void => {
   console.log(vehicle.summary());
 };
+
+
+// summary function that returns a sting
+interface Reportable {
+  summary(): string;
+}
+
+const  printSummary = (item: Reportable): void => {
+  console.log(item.summary())
+}
+
+
+const drink = {
+  color: 'pink',
+  carbonated: true,
+  sugar: 40,
+  summary(): string {
+    return ` this drink has ${this.sugar} grams of sugar`
+  }
+}
+
+const printSummary3 = (item: Reportable): void => {
+  console.log(item.summary())
+}
+
+printSummary3(drink);
